@@ -12,7 +12,13 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async ()
   const response = await fetch('http://localhost:3001/products');
   return response.json();
 });
-
+// 2. NOUVEAU : Supprimer un produit
+export const deleteProduct = createAsyncThunk('products/deleteProduct', async (id) => {
+  // On supprime côté serveur
+  await fetch(`http://localhost:3001/products/${id}`, { method: 'DELETE' });
+  // On retourne l'id pour le supprimer ensuite de la liste locale
+  return id;
+});
 const productsSlice = createSlice({
   name: 'products',
   initialState,
