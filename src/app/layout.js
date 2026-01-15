@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body className={`${inter.className} bg-slate-50 text-slate-800`}>
+      <body className={`${inter.className} bg-slate-50 text-slate-800`} suppressHydrationWarning={true}>
         <ReduxProvider>
             
           <div className="flex min-h-screen">
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
             <Sidebar />
 
             {/* 2. La zone de contenu principal */}
-            <main className="flex-1 ml-64 p-8">
+            <main className="flex-1 ml-64 p-8 bg-white">
               {children}
             </main>
           </div>

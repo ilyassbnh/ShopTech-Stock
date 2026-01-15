@@ -1,99 +1,23 @@
 {
   "products": [
-    {
-      "name": "Chaise scandinave",
-      "sku": "CH-001",
-      "category": "Mobilier",
-      "price": 300,
-      "quantity": 24,
-      "description": "Chaise confortable design nordique.",
-      "status": "En stock",
-      "id": "1"
-    },
-    {
-      "id": "2",
-      "name": "Table basse en bois",
-      "sku": "TBL-002",
-      "category": "Mobilier",
-      "price": 149.5,
-      "quantity": 8,
-      "status": "Stock faible",
-      "description": "Table basse en chêne massif."
-    },
-    {
-      "id": "3",
-      "name": "Lampe suspendue",
-      "sku": "LP-003",
-      "category": "Éclairage",
-      "price": 89,
-      "quantity": 55,
-      "status": "En stock",
-      "description": "Luminaire moderne pour salon."
-    },
-    {
-      "id": "4",
-      "name": "Coussin décoratif",
-      "sku": "PIL-004",
-      "category": "Textiles",
-      "price": 45,
-      "quantity": 0,
-      "status": "Rupture",
-      "description": "Coussin velours bleu canard."
-    },
-    {
-      "id": "35b2",
-      "name": "Blair Ruiz",
-      "sku": "SKU-4503",
-      "category": "Jardin",
-      "price": 767,
-      "quantity": 898,
-      "description": "Aut quibusdam eaque ",
-      "status": "En stock"
-    },
-    {
-      "id": "fa4d",
-      "name": "Lydia Small",
-      "sku": "SKU-7990",
-      "category": "Jardin",
-      "price": 951,
-      "quantity": 984,
-      "description": "Enim rerum est tempo",
-      "status": "En stock"
-    }
+    { "id": "1", "name": "Chaise scandinave", "sku": "CH-001", "category": "Mobilier", "price": 299.99, "quantity": 24, "status": "En stock", "description": "Chaise confortable design nordique." },
+    { "id": "2", "name": "Table basse en bois", "sku": "TBL-002", "category": "Mobilier", "price": 149.50, "quantity": 8, "status": "Stock faible", "description": "Table basse en chêne massif." },
+    { "id": "3", "name": "Lampe suspendue", "sku": "LP-003", "category": "Éclairage", "price": 89.00, "quantity": 55, "status": "En stock", "description": "Luminaire moderne pour salon." },
+    { "id": "4", "name": "Coussin décoratif", "sku": "PIL-004", "category": "Textiles", "price": 45.00, "quantity": 0, "status": "Rupture", "description": "Coussin velours bleu canard." }
   ],
   "sales": [
-    {
-      "id": "101",
-      "productId": "1",
-      "productName": "Chaise scandinave",
-      "category": "Mobilier",
-      "quantity": 2,
-      "unitPrice": 299.99,
-      "date": "2023-10-28"
-    },
-    {
-      "id": "102",
-      "productId": "5",
-      "productName": "Smartphone X12",
-      "category": "Électronique",
-      "quantity": 1,
-      "unitPrice": 799.99,
-      "date": "2023-10-28"
-    },
-    {
-      "id": "103",
-      "productId": "3",
-      "productName": "Lampe de bureau LED",
-      "category": "Maison",
-      "quantity": 5,
-      "unitPrice": 24.5,
-      "date": "2023-10-25"
-    }
+    { "id": "101", "productId": "1", "productName": "Chaise scandinave", "category": "Mobilier", "quantity": 2, "unitPrice": 299.99, "date": "2023-10-28" },
+    { "id": "102", "productId": "5", "productName": "Smartphone X12", "category": "Électronique", "quantity": 1, "unitPrice": 799.99, "date": "2023-10-28" },
+    { "id": "103", "productId": "3", "productName": "Lampe de bureau LED", "category": "Maison", "quantity": 5, "unitPrice": 24.50, "date": "2023-10-25" },
+    { "id": "104", "productId": "6", "productName": "Tondeuse Pro", "category": "Jardin", "quantity": 1, "unitPrice": 299.00, "date": "2023-10-29" },
+    { "id": "105", "productId": "7", "productName": "Tapis de Yoga", "category": "Sport", "quantity": 3, "unitPrice": 19.99, "date": "2023-10-30" },
+    { "id": "106", "productId": "4", "productName": "Coussin décoratif", "category": "Textiles", "quantity": 10, "unitPrice": 49.00, "date": "2023-10-30" },
+    { "id": "107", "productId": "8", "productName": "Kit Haltères", "category": "Sport", "quantity": 2, "unitPrice": 59.90, "date": "2023-10-31" }
   ],
   "stats": {
     "totalStock": 1450,
     "totalStockValue": 12300,
-    "productsSold": 215,
-    "totalSalesValue": 4580
+    "productsSold": 236,
+    "totalSalesValue": 5200
   }
 }

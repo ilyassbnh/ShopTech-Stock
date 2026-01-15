@@ -26,20 +26,6 @@ export default function Sidebar() {
           <Package size={20} />
           <span className="font-medium">Inventaire</span>
         </Link>
-
-        {/* Liens décoratifs (non fonctionnels pour l'instant) */}
-        <div className="flex items-center gap-3 p-3 text-slate-400 cursor-not-allowed">
-          <ShoppingCart size={20} />
-          <span>Commandes</span>
-        </div>
-        <div className="flex items-center gap-3 p-3 text-slate-400 cursor-not-allowed">
-          <FileText size={20} />
-          <span>Rapports</span>
-        </div>
-        <div className="flex items-center gap-3 p-3 text-slate-400 cursor-not-allowed">
-          <Settings size={20} />
-          <span>Paramètres</span>
-        </div>
       </nav>
 
       {/* Profil Utilisateur (Bas de page) */}
@@ -49,7 +35,6 @@ export default function Sidebar() {
         </div>
         <div>
             <p className="text-sm font-medium text-slate-800">Utilisateur</p>
-            <p className="text-xs text-slate-500">Admin</p>
         </div>
       </div>
     </aside>
