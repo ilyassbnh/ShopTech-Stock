@@ -1,14 +1,14 @@
 {
   "products": [
     {
-      "id": "1",
       "name": "Chaise scandinave",
       "sku": "CH-001",
       "category": "Mobilier",
-      "price": 299.99,
+      "price": 300,
       "quantity": 24,
+      "description": "Chaise confortable design nordique.",
       "status": "En stock",
-      "description": "Chaise confortable design nordique."
+      "id": "1"
     },
     {
       "id": "2",
