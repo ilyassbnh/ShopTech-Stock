@@ -54,7 +54,7 @@ export default function ProductsList() {
           <input 
             type="text"
             placeholder="Rechercher par nom..."
-            className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-10 pr-4 py-2 border border-slate-200 text-slate-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -64,7 +64,7 @@ export default function ProductsList() {
             <div className="relative">
                 <Filter className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                 <select 
-                    className="pl-10 pr-8 py-2 border border-slate-200 rounded-lg bg-white focus:outline-none"
+                    className="pl-10 pr-8 py-2 border border-slate-200 text-slate-900 rounded-lg bg-white focus:outline-none"
                     value={categoryFilter}
                     onChange={(e) => setCategoryFilter(e.target.value)}
                 >

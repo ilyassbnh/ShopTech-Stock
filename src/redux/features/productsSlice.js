@@ -1,42 +1,52 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// État initial sans interface
 const initialState = {
   items: [],
-  status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+  status: 'idle',
   error: null,
 };
 
-// Action asynchrone pour récupérer les produits
+// 1. Fetch
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
   const response = await fetch('http://localhost:3001/products');
   return response.json();
 });
-// 2. NOUVEAU : Supprimer un produit
+
+// 2. Delete
 export const deleteProduct = createAsyncThunk('products/deleteProduct', async (id) => {
-  // On supprime côté serveur
   await fetch(`http://localhost:3001/products/${id}`, { method: 'DELETE' });
-  // On retourne l'id pour le supprimer ensuite de la liste locale
   return id;
 });
+
+// 3. NOUVEAU : Add Product
+export const addProduct = createAsyncThunk('products/addProduct', async (newProduct) => {
+  const response = await fetch('http://localhost:3001/products', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newProduct),
+  });
+  return response.json();
+});
+
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {
-    // Actions synchrones ici
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchProducts.pending, (state) => {
-        state.status = 'loading';
-      })
+      // Fetch
+      .addCase(fetchProducts.pending, (state) => { state.status = 'loading'; })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.items = action.payload;
       })
-      .addCase(fetchProducts.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Erreur inconnue';
+      // Delete
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        state.items = state.items.filter((p) => p.id !== action.payload);
+      })
+      // Add (On ajoute le nouveau produit à la liste existante)
+      .addCase(addProduct.fulfilled, (state, action) => {
+        state.items.push(action.payload);
       });
   },
 });
