@@ -28,12 +28,51 @@ export const addProduct = createAsyncThunk('products/addProduct', async (newProd
   return response.json();
 });
 
-// 4. NOUVEAU : Edit (Modification)
+// 4. Edit (Modification)
 export const editProduct = createAsyncThunk('products/editProduct', async ({ id, updatedData }) => {
   const response = await fetch(`http://localhost:3001/products/${id}`, {
-    method: 'PUT', // Ou PATCH
+    method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(updatedData),
+  });
+  return response.json();
+});
+
+// 5. NOUVEAU : Add Sale (Ajout de vente)
+export const addSale = createAsyncThunk('products/addSale', async ({ productId, saleData }) => {
+  // 1. On récupère le produit actuel pour avoir ses ventes existantes
+  const productRes = await fetch(`http://localhost:3001/products/${productId}`);
+  const product = await productRes.json();
+
+  // 2. On prépare la nouvelle vente
+  const newSale = {
+    id: Date.now().toString(), // ID unique simple
+    productId,
+    productName: product.name,
+    category: product.category,
+    ...saleData // quantity, unitPrice, date
+  };
+
+  // 3. On met à jour la liste des ventes et les stats
+  const updatedSales = [...(product.sales || []), newSale];
+  const updatedStats = {
+    totalSales: (product.stats?.totalSales || 0) + Number(saleData.quantity),
+    revenue: (product.stats?.revenue || 0) + (Number(saleData.quantity) * Number(saleData.unitPrice))
+  };
+
+  const updatedProduct = {
+    ...product,
+    sales: updatedSales,
+    stats: updatedStats,
+    // Optionnel : décrémenter le stock
+    quantity: product.quantity - Number(saleData.quantity)
+  };
+
+  // 4. On sauvegarde le produit mis à jour
+  const response = await fetch(`http://localhost:3001/products/${productId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(updatedProduct),
   });
   return response.json();
 });
@@ -62,7 +101,14 @@ const productsSlice = createSlice({
       .addCase(editProduct.fulfilled, (state, action) => {
         const index = state.items.findIndex((p) => p.id === action.payload.id);
         if (index !== -1) {
-          state.items[index] = action.payload; // On remplace l'ancien par le nouveau
+          state.items[index] = action.payload;
+        }
+      })
+      // Add Sale
+      .addCase(addSale.fulfilled, (state, action) => {
+        const index = state.items.findIndex((p) => p.id === action.payload.id);
+        if (index !== -1) {
+          state.items[index] = action.payload;
         }
       });
   },
