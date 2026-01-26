@@ -3,30 +3,35 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
-    // 1. Récupérer les données envoyées par le Dashboard
-    const { stats, topProducts } = await req.json();
+    const { stats, topProducts, lowStock } = await req.json();
 
-    // 2. Initialiser Gemini
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    // 1. Check API Key
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json({ error: "API Key manquante" }, { status: 500 });
+    }
 
-    // 3. Préparer le prompt pour l'IA
+    // 2. Initialize Model
+    const genAI = new GoogleGenerativeAI(apiKey);
+
+    // 3. Use the working model detected via script
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+
     const prompt = `
-      Tu es un expert en analyse de données commerciales.
-      Voici les statistiques de vente de mon magasin ce mois-ci :
-      - Revenu total : ${stats.totalSalesValue} €
-      - Produits vendus : ${stats.productsSold}
-      - Stock restant : ${stats.totalStock}
+      Tu es un expert en gestion de stock.
+      Données:
+      - CA: ${stats.totalSalesValue} €
+      - Ventes: ${stats.productsSold}
+      - Stock: ${stats.totalStockValue} €
       
-      Voici quelques produits phares (Top Ventes) :
-      ${JSON.stringify(topProducts)}
+      Top produits: ${JSON.stringify(topProducts)}
+      Stock faible: ${JSON.stringify(lowStock)}
 
-      Agis comme un consultant business. Rédige un court paragraphe (max 3 phrases) pour analyser cette performance.
-      Sois direct, professionnel et donne un conseil d'action (ex: promotion, réapprovisionnement).
-      Ne dis pas "bonjour", commence directement l'analyse.
+      Analyse la performance en 2 phrases très courtes et directes. 
+      Va droit au but. Pas de bla-bla.
+      Termine par 1 action précise et concrète pour améliorer les ventes.
     `;
 
-    // 4. Générer la réponse
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
@@ -36,7 +41,7 @@ export async function POST(req) {
   } catch (error) {
     console.error("Erreur IA:", error);
     return NextResponse.json(
-      { error: "Impossible de générer l'analyse pour le moment." },
+      { error: error.message || "Erreur de génération" },
       { status: 500 }
     );
   }

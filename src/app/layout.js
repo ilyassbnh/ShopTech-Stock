@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ReduxProvider } from "@/redux/provider"; 
+import { ReduxProvider } from "@/redux/provider";
 import Sidebar from "@/components/Sidebar"; // <-- Import de ta Sidebar
 
 const inter = Inter({ subsets: ["latin"] });
@@ -12,10 +12,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning={true}>
       <body className={`${inter.className} bg-slate-50 text-slate-800`} suppressHydrationWarning={true}>
         <ReduxProvider>
-            
+
           <div className="flex min-h-screen">
             {/* 1. La Sidebar */}
             <Sidebar />

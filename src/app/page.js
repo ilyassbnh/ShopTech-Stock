@@ -68,29 +68,43 @@ export default function Dashboard() {
 
   const handleGenerateAnalysis = async () => {
     setIsAiLoading(true);
+    setAiAnalysis("Analyse en cours..."); // Optional: Give immediate feedback
+
     try {
+      // ... (your existing data preparation code: topSalesData, lowStockData) ...
       const topSalesData = allSales.slice(0, 3).map(s => ({
         produit: s.productName,
         quantite: s.quantity,
         categorie: s.category
       }));
+      
+      const lowStockData = products
+        .filter(p => (parseInt(p.quantity) || 0) <= 10)
+        .map(p => ({ name: p.name, quantity: p.quantity }));
 
       const response = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           stats: computedStats,
-          topProducts: topSalesData
+          topProducts: topSalesData,
+          lowStock: lowStockData
         }),
       });
 
       const data = await response.json();
+
+      if (!response.ok || data.error) {
+        throw new Error(data.error || "Erreur serveur");
+      }
+
       if (data.analysis) {
         setAiAnalysis(data.analysis);
       }
+      
     } catch (error) {
-      console.error("Erreur", error);
-      setAiAnalysis("Erreur lors de la génération. Vérifiez votre clé API.");
+      console.error("Erreur Frontend:", error);
+      setAiAnalysis(`Erreur: ${error.message}. Vérifiez le terminal de VS Code.`);
     } finally {
       setIsAiLoading(false);
     }
@@ -127,6 +141,9 @@ export default function Dashboard() {
                   <Tooltip
                     cursor={{ fill: 'transparent' }}
                     formatter={(value) => [`${value} €`, 'Ventes']}
+                    contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                    labelStyle={{ color: 'black', fontWeight: 'bold' }}
+                    itemStyle={{ color: '#3b82f6' }}
                   />
                   <Bar dataKey="ventes" fill="#3b82f6" radius={[4, 4, 0, 0]} barSize={40} />
                 </BarChart>

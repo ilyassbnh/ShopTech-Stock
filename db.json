@@ -5,10 +5,179 @@
       "sku": "SKU-4071",
       "category": "Jardin",
       "price": 46,
-      "quantity": 85,
+      "quantity": 61,
       "description": "Exercitationem dicta",
       "status": "En stock",
-      "id": "d55f"
+      "id": "d55f",
+      "sales": [
+        {
+          "id": "1769183559483",
+          "productId": "d55f",
+          "productName": "Freya Carlson",
+          "category": "Jardin",
+          "quantity": "3",
+          "unitPrice": "46",
+          "date": "2026-01-23"
+        },
+        {
+          "id": "1769183650469",
+          "productId": "d55f",
+          "productName": "Freya Carlson",
+          "category": "Jardin",
+          "quantity": "15",
+          "unitPrice": 46,
+          "date": "2026-01-23"
+        },
+        {
+          "id": "1769424005396",
+          "productId": "d55f",
+          "productName": "Freya Carlson",
+          "category": "Jardin",
+          "quantity": 1,
+          "unitPrice": 46,
+          "date": "2026-01-26T10:40:05.365Z"
+        },
+        {
+          "id": "1769424781581",
+          "productId": "d55f",
+          "productName": "Freya Carlson",
+          "category": "Jardin",
+          "quantity": 1,
+          "unitPrice": 46,
+          "date": "2026-01-26T10:53:01.536Z"
+        },
+        {
+          "id": "1769424880147",
+          "productId": "d55f",
+          "productName": "Freya Carlson",
+          "category": "Jardin",
+          "quantity": 2,
+          "unitPrice": 46,
+          "date": "2026-01-26T10:54:40.132Z"
+        },
+        {
+          "id": "1769425285117",
+          "productId": "d55f",
+          "productName": "Freya Carlson",
+          "category": "Jardin",
+          "quantity": 2,
+          "unitPrice": 46,
+          "date": "2026-01-26T11:01:25.111Z"
+        }
+      ],
+      "stats": {
+        "totalSales": 24,
+        "revenue": 1104
+      }
+    },
+    {
+      "name": "Brody Sears",
+      "sku": "SKU-8472",
+      "category": "Mobilier",
+      "price": 499.94,
+      "quantity": 481,
+      "description": "Iste eaque quis aut ",
+      "status": "En stock",
+      "id": "df13",
+      "sales": [
+        {
+          "id": "1769426222373",
+          "productId": "df13",
+          "productName": "Brody Sears",
+          "category": "Mobilier",
+          "quantity": 4,
+          "unitPrice": 499.94,
+          "date": "2026-01-26T11:17:02.368Z"
+        },
+        {
+          "id": "1769426275103",
+          "productId": "df13",
+          "productName": "Brody Sears",
+          "category": "Mobilier",
+          "quantity": 200,
+          "unitPrice": 499.94,
+          "date": "2026-01-26T11:17:55.094Z"
+        }
+      ],
+      "stats": {
+        "totalSales": 204,
+        "revenue": 101987.76
+      }
+    },
+    {
+      "id": "4407",
+      "name": "Sybill Vaughan",
+      "sku": "SKU-7289",
+      "category": "Textiles",
+      "price": 146,
+      "quantity": 808,
+      "description": "Iste suscipit eos n",
+      "status": "En stock",
+      "sales": [
+        {
+          "id": "1769183688588",
+          "productId": "4407",
+          "productName": "Sybill Vaughan",
+          "category": "Textiles",
+          "quantity": "30",
+          "unitPrice": 146,
+          "date": "2026-01-23"
+        }
+      ],
+      "stats": {
+        "totalSales": 30,
+        "revenue": 4380
+      }
+    },
+    {
+      "id": "72ce",
+      "name": "Wang Levy",
+      "sku": "SKU-1721",
+      "category": "Électronique",
+      "price": 75,
+      "quantity": 17,
+      "description": "Ratione odit quasi e",
+      "status": "En stock",
+      "sales": [
+        {
+          "id": "1769183710190",
+          "productId": "72ce",
+          "productName": "Wang Levy",
+          "category": "Électronique",
+          "quantity": "75",
+          "unitPrice": 75,
+          "date": "2026-01-23"
+        }
+      ],
+      "stats": {
+        "totalSales": 75,
+        "revenue": 5625
+      }
+    },
+    {
+      "id": "4b70",
+      "name": "Owen Pacheco",
+      "sku": "SKU-9587",
+      "category": "Éclairage",
+      "price": 910,
+      "quantity": 667,
+      "description": "Ut amet sequi venia",
+      "status": "En stock",
+      "sales": [
+        {
+          "id": "1769183741633",
+          "productId": "4b70",
+          "productName": "Owen Pacheco",
+          "category": "Éclairage",
+          "quantity": "22",
+          "unitPrice": 910,
+          "date": "2026-01-23"
+        }
+      ],
+      "stats": {
+        "totalSales": 22,
+        "revenue": 20020
+      }
     }
   ]
 }
